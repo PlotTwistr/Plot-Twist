@@ -10,8 +10,17 @@
 <body>
   <div class="container">
     <h1>Plot Twist</h1>
-    <p>Click “Spin!” to get a random book from a sample TBR list.</p>
-    <button onclick="spinBook()">Spin!</button>
+    <p>Paste your <strong>Amazon Wish List</strong> (must be public) or enter a list of books below.</p>
+
+    <label for="amazonInput"><strong>Amazon Wish List URL</strong></label>
+    <input type="text" id="amazonInput" placeholder="https://www.amazon.com/hz/wishlist/..." />
+
+    <p><em>Or paste book titles/ISBNs, one per line:</em></p>
+    <textarea id="manualInput" rows="6" placeholder="Fourth Wing
+Book Lovers
+The Housemaid"></textarea>
+
+    <button id="spinBtn" onclick="spinBook()">🔮 Spin!</button>
 
     <div id="result" class="hidden">
       <img id="bookImage" alt="Book cover">
@@ -21,7 +30,7 @@
     </div>
 
     <div class="footer">
-      <p>Support this project:</p>
+      <p><em>Goodreads and StoryGraph support coming soon!</em></p>
       <div class="support-buttons">
         <a href="https://buymeacoffee.com/plottwist" target="_blank" class="support-button bmac">☕ Buy Me a Coffee</a>
         <a href="https://ko-fi.com/plottwisttbr" target="_blank" class="support-button kofi">💜 Support on Ko-fi</a>

@@ -1,31 +1,34 @@
 
 function spinBook() {
-  const books = [
-    {
-      title: "Fourth Wing",
-      blurb: "A thrilling fantasy of dragons, danger, and desire.",
-      isbn: "1649374046"
-    },
-    {
-      title: "Book Lovers",
-      blurb: "A rom-com about bookish rivals finding love.",
-      isbn: "0593334833"
-    },
-    {
-      title: "The Housemaid",
-      blurb: "A psychological thriller with shocking twists.",
-      isbn: "B09V1ZLL7N"
-    }
-  ];
+  const manualInput = document.getElementById("manualInput").value.trim();
+  let bookList = [];
 
-  const selected = books[Math.floor(Math.random() * books.length)];
+  if (manualInput) {
+    bookList = manualInput.split('\n').filter(line => line.trim() !== '');
+  } else {
+    alert("Please paste book titles or ISBNs to use Plot Twist.");
+    return;
+  }
 
-  const coverUrl = `https://covers.openlibrary.org/b/isbn/${selected.isbn}-L.jpg`;
+  // Show loading text
+  const resultDiv = document.getElementById("result");
+  resultDiv.classList.remove("hidden");
+  resultDiv.innerHTML = "<p class='loading'>🔮 Consulting the TBR gods...</p>";
 
-  document.getElementById("bookTitle").innerText = selected.title;
-  document.getElementById("bookBlurb").innerText = selected.blurb;
-  document.getElementById("bookImage").src = coverUrl;
-  document.getElementById("buyLink").href = `https://www.amazon.com/dp/${selected.isbn}?tag=tbroulette-20`;
+  // Simulate delay and then show result
+  setTimeout(() => {
+    const selected = bookList[Math.floor(Math.random() * bookList.length)];
+    const isbnCandidate = selected.replace(/[^0-9X]/gi, '').substring(0, 13);
+    const coverUrl = `https://covers.openlibrary.org/b/isbn/${isbnCandidate}-L.jpg`;
 
-  document.getElementById("result").classList.remove("hidden");
+    resultDiv.innerHTML = `
+      <img id="bookImage" src="${coverUrl}" alt="Book cover">
+      <h2 id="bookTitle">${selected}</h2>
+      <p id="bookBlurb">We'll guess the blurb based on title soon!</p>
+      <a id="buyLink" href="https://www.amazon.com/s?k=${encodeURIComponent(selected)}&tag=tbroulette-20" target="_blank">Read It on Amazon</a>
+    `;
+    resultDiv.style.animation = "none";
+    void resultDiv.offsetWidth;
+    resultDiv.style.animation = "fadeInScale 0.6s ease-in-out forwards";
+  }, 1500); // delay for 1.5 seconds
 }
