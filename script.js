@@ -4,29 +4,28 @@ function spinBook() {
     {
       title: "Fourth Wing",
       blurb: "A thrilling fantasy of dragons, danger, and desire.",
-      asin: "1649374046",
-      image: "https://m.media-amazon.com/images/I/81zS4pVtuhL._SL1500_.jpg"
+      isbn: "1649374046"
     },
     {
       title: "Book Lovers",
       blurb: "A rom-com about bookish rivals finding love.",
-      asin: "0593334833",
-      image: "https://m.media-amazon.com/images/I/71g4B9X9lmL._SL1500_.jpg"
+      isbn: "0593334833"
     },
     {
       title: "The Housemaid",
       blurb: "A psychological thriller with shocking twists.",
-      asin: "B09V1ZLL7N",
-      image: "https://m.media-amazon.com/images/I/71MIy8A0zPL._SL1500_.jpg"
+      isbn: "B09V1ZLL7N"
     }
   ];
 
   const selected = books[Math.floor(Math.random() * books.length)];
 
+  const coverUrl = `https://covers.openlibrary.org/b/isbn/${selected.isbn}-L.jpg`;
+
   document.getElementById("bookTitle").innerText = selected.title;
   document.getElementById("bookBlurb").innerText = selected.blurb;
-  document.getElementById("bookImage").src = selected.image;
-  document.getElementById("buyLink").href = `https://www.amazon.com/dp/${selected.asin}?tag=tbroulette-20`;
+  document.getElementById("bookImage").src = coverUrl;
+  document.getElementById("buyLink").href = `https://www.amazon.com/dp/${selected.isbn}?tag=tbroulette-20`;
 
   document.getElementById("result").classList.remove("hidden");
 }
