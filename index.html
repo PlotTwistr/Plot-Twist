@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plot Twist</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Plot Twist</h1>
+    <p>Paste your public Amazon wishlist link and click “Spin!” to get a random book.</p>
+    <input type="text" id="wishlistInput" placeholder="https://www.amazon.com/hz/wishlist/..." />
+    <button onclick="spinBook()">Spin!</button>
+
+    <div id="result" class="hidden">
+      <img id="bookImage" alt="Book cover">
+      <h2 id="bookTitle"></h2>
+      <p id="bookBlurb"></p>
+      <a id="buyLink" target="_blank">Read It on Amazon</a>
+    </div>
+
+    <div class="footer">
+      <p>Support this project:</p>
+      <a href="https://buymeacoffee.com/plottwist" target="_blank">Buy Me a Coffee</a> |
+      <a href="https://ko-fi.com/plottwisttbr" target="_blank">Ko-fi</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
